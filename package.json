@@ -12,7 +12,15 @@
     "type": "git",
     "url": "git+https://github.com/heyderpd/npm-dejavu-call.git"
   },
-  "keywords": [],
+  "keywords": [
+    "cache",
+    "memorize",
+    "recall",
+    "fast",
+    "functional",
+    "simplify",
+    "less"
+  ],
   "author": "NPM dejavu-call <heyderpd@gmail.com> (http://heyderpd.github.io)",
   "license": "MIT",
   "bugs": {
