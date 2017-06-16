@@ -3,6 +3,6 @@ npm-debug*
 
 node_modules/*
 dist/*
-test/*
+# test/*
 
 package-lock.json
