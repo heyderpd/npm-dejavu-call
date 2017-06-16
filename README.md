@@ -6,6 +6,9 @@ The proposal is to reduce the response time for processing heavy functions, but 
 [![NPM](https://nodei.co/npm/dejavu-call.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dejavu-call/)
 [![NPM](https://nodei.co/npm-dl/dejavu-call.png?height=3&months=2)](https://nodei.co/npm-dl/dejavu-call/)
 
+## I will help if you have any difficulty =)
+Contact me by [github:heyderpd](https://github.com/heyderpd). I'll be glad to help you.
+
 ## Thanks for [npm~lucasmreis](https://www.npmjs.com/~lucasmreis)
 
 ## To create a new file from another, using call's found in a directory and whitelist
@@ -14,8 +17,8 @@ Else is a blacklist will use list (of anymatch) to remove id's. And will search 
 You don't need pass a list if pass a directory.
 The var list accept any values of [anymath](https://www.npmjs.com/package/anymatch) module
 
-## IMPORTANT!!! in 'recall' your function (named as Service) will receive yours parameters (named as context) using the spread operator
-Example:
+## IMPORTANT!!!
+In 'recall' your function (named as Service) will receive yours parameters (named as context) using the spread operator
 ```javascript
 export const recall = (contextId, Service, context, Throw = false) => {
   /*  *** */
