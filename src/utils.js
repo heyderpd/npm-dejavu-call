@@ -1,5 +1,7 @@
-import { hasProp, isFunction, isString, isArray, type } from 'pytils'
+import { hasProp, isFunction, isString, type } from 'pytils'
 import sha256 from './sha256'
+
+const isArray = object => type(object) === 'object' && object.constructor == Array
 
 export const _ifT = (Throw, text) => {
   if (Throw) {
@@ -45,7 +47,7 @@ const forget = keeper => {
   keeper.first += 1
 }
 
-export const memorize = (contextId, contextString, result) => {
+export const _memorize = (inMind, limit) => (contextId, contextString, result) => {
   const keeper = inMind[contextId]
     ? inMind[contextId]
     : inMind[contextId] = createKeeper()

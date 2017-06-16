@@ -1,16 +1,16 @@
-import { hasProp } from 'pytils'
-import { stringify, memorize, isEssential, _ifT } from './utils'
+import { hasProp, isString } from 'pytils'
+import { stringify, _memorize, isEssential, _ifT } from './utils'
 import sha256 from './sha256'
 
 const limit = 20
 const inMind = {}
+const memorize = _memorize(inMind, limit)
 
-const _remember = (contextId, context, Throw) => {
-  const contextString = stringify(context)
+const _remember = (contextId, contextString, Throw) => {
   if (hasProp(inMind, contextId)) {
     const keeper = inMind[contextId]
     if (hasProp(keeper.memo, contextString)) {
-      return { memo: inMind[contextString] }
+      return { memo: keeper.memo[contextString] }
     }
     _ifT(Throw, 'dejavu-call: no memory found')
   }
@@ -18,7 +18,13 @@ const _remember = (contextId, context, Throw) => {
   return {}
 }
 
-export const getHash = sha256
+export const getHash = data => {
+  _ifT(
+    !isString(data),
+    'dejavu-call(getHash): data is a essential! and need to be a string')
+
+  return sha256(data)
+}
 
 export const remember = (contextId, context, Throw = true) => {
   isEssential(Service, contextId, context)
@@ -27,7 +33,8 @@ export const remember = (contextId, context, Throw = true) => {
 
 export const recall = (contextId, Service, context, Throw = false) => {
   isEssential(Service, contextId, context)
-  const maybe = _remember(contextId, context, Throw)
+  const contextString = stringify(context)
+  const maybe = _remember(contextId, contextString, Throw)
   if (hasProp(maybe, 'memo')) {
     return maybe.memo
 

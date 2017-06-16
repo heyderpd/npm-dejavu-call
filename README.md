@@ -3,6 +3,8 @@ Intercepts a function call and stores the result with the given context.
 In calls that have the same parameters, it will return the stored result.
 The proposal is to reduce the response time for processing heavy functions, but it always has the same result. Doing this in a simple and transparent way, taking away the need for developer memory management.
 
+## GET FAST!! - Reduced in test case from 107 milliseconds to 12 milliseconds
+
 [![NPM](https://nodei.co/npm/dejavu-call.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dejavu-call/)
 [![NPM](https://nodei.co/npm-dl/dejavu-call.png?height=3&months=2)](https://nodei.co/npm-dl/dejavu-call/)
 
@@ -38,7 +40,7 @@ const { recall, getHash } = require('dejavu-call')
 /* */
 
 const heavyFunctions = (a, b, c) => a +b +c
-const functionId = getHash('heavyFunctions') || getHash(functionId.toString())
+const functionId = getHash('heavyFunctions') || getHash(heavyFunctions.toString())
 const heavyFunctionsMemorized = context => recall(functionId, heavyFunctions, context)
 
 const context = [a, b, c]
@@ -50,7 +52,7 @@ Example:
 const { recall, getHash } = require('dejavu-call')
 
 const heavyFunctions = (a, b, c) => a +b +c
-const functionId = getHash('heavyFunctions') || getHash(functionId.toString())
+const functionId = getHash('heavyFunctions') || getHash(heavyFunctions.toString())
 
 const context = [a, b, c]
 const result = recall(functionId, heavyFunctions, context)
@@ -62,7 +64,7 @@ Example:
 const { getHash, remember } = require('dejavu-call')
 
 const heavyFunctions = (a, b, c) => a +b +c
-const functionId = getHash('heavyFunctions') || getHash(functionId.toString())
+const functionId = getHash('heavyFunctions') || getHash(heavyFunctions.toString())
 
 const context = [a, b, c]
 let result

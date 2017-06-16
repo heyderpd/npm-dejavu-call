@@ -1,6 +1,6 @@
 {
   "name": "dejavu-call",
-  "version": "0.5.1",
+  "version": "0.6.6",
   "description": "",
   "main": "dist/main.js",
   "scripts": {
@@ -19,7 +19,9 @@
     "fast",
     "functional",
     "simplify",
-    "less"
+    "less",
+    "repetition",
+    "call"
   ],
   "author": "NPM dejavu-call <heyderpd@gmail.com> (http://heyderpd.github.io)",
   "license": "MIT",
