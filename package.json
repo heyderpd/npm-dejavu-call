@@ -1,6 +1,6 @@
 {
   "name": "dejavu-call",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "",
   "main": "dist/main.js",
   "scripts": {
@@ -37,6 +37,6 @@
     "babel-register": "^6.24.1"
   },
   "dependencies": {
-    "pytils": "^1.29.3"
+    "pytils": "^1.30.0"
   }
 }

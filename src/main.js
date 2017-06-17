@@ -1,4 +1,4 @@
-import { hasProp, isString } from 'pytils'
+import { hasProp, isString, ifThrow } from 'pytils'
 import { stringify, _memorize, isEssential, _ifT } from './utils'
 import sha256 from './sha256'
 
@@ -12,14 +12,14 @@ const _remember = (contextId, contextString, Throw) => {
     if (hasProp(keeper.memo, contextString)) {
       return { memo: keeper.memo[contextString] }
     }
-    _ifT(Throw, 'dejavu-call: no memory found')
+    ifThrow(Throw, 'dejavu-call: no memory found')
   }
-  _ifT(Throw, 'dejavu-call: no keeper found')
+  ifThrow(Throw, 'dejavu-call: no keeper found')
   return {}
 }
 
 export const getHash = data => {
-  _ifT(
+  ifThrow(
     !isString(data),
     'dejavu-call(getHash): data is a essential! and need to be a string')
 

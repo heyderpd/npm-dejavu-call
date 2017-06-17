@@ -1,24 +1,16 @@
-import { hasProp, isFunction, isString, type } from 'pytils'
+import { hasProp, isFunction, isString, type, isArray, ifThrow } from 'pytils'
 import sha256 from './sha256'
 
-const isArray = object => type(object) === 'object' && object.constructor == Array
-
-export const _ifT = (Throw, text) => {
-  if (Throw) {
-    throw text
-  }
-}
-
 export const isEssential = (Service, contextId, context) => {
-  _ifT(
+  ifThrow(
     !isFunction(Service),
     'dejavu-call: Service is a essential! and need to be a function')
 
-  _ifT(
+  ifThrow(
     !isString(contextId),
     'dejavu-call: contextId is a essential! and need to be a string')
 
-  _ifT(
+  ifThrow(
     !isArray(context),
     'dejavu-call: context is a essential! and need to be a array')
 }
