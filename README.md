@@ -2,6 +2,7 @@
 Intercepts a function call and stores the result with the given context.
 In calls that have the same parameters, it will return the stored result.
 The proposal is to reduce the response time for processing heavy functions, but it always has the same result. Doing this in a simple and transparent way, taking away the need for developer memory management.
+Can store multiple functions and their contexts separately in an individual stack of items limit 20, each new surplus item will erase an older one.
 
 ## GET FAST!! - Reduced in test case from 107 milliseconds to 12 milliseconds
 
@@ -12,12 +13,6 @@ The proposal is to reduce the response time for processing heavy functions, but 
 Contact me by [github:heyderpd](https://github.com/heyderpd). I'll be glad to help you.
 
 ## Thanks for [npm~lucasmreis](https://www.npmjs.com/~lucasmreis)
-
-## To create a new file from another, using call's found in a directory and whitelist
-If is whitelist program will use list (of anymatch)  to select id's. And will search call's in directories, using the rest of id's found in svg. Finally create a big whitelist to extract!
-Else is a blacklist will use list (of anymatch) to remove id's. And will search id's is not called in directories, using the of rest id's found in svg. Finally create a big blacklist to extract!
-You don't need pass a list if pass a directory.
-The var list accept any values of [anymath](https://www.npmjs.com/package/anymatch) module
 
 ## IMPORTANT!!!
 In 'recall' your function (named as Service) will receive yours parameters (named as context) using the spread operator
