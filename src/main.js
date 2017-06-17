@@ -6,16 +6,17 @@ const limit = 20
 const inMind = {}
 const memorize = _memorize(inMind, limit)
 
-const _remember = (contextId, contextString, Throw) => {
+const _remember = (contextId, context, contextString, Throw) => noMemo => {
+  contextString = contextString ? contextString : stringify(context)
   if (hasProp(inMind, contextId)) {
     const keeper = inMind[contextId]
     if (hasProp(keeper.memo, contextString)) {
-      return { memo: keeper.memo[contextString] }
+      return keeper.memo[contextString]
     }
     ifThrow(Throw, 'dejavu-call: no memory found')
   }
   ifThrow(Throw, 'dejavu-call: no keeper found')
-  return {}
+  return noMemo(contextString)
 }
 
 export const getHash = data => {
@@ -26,21 +27,26 @@ export const getHash = data => {
   return sha256(data)
 }
 
-export const remember = (contextId, context, Throw = true) => {
-  isEssential(Service, contextId, context)
-  return _remember(contextId, context, Throw)
+export const remember = (contextId, context, contextString = false, Throw = true) => {
+  isEssential(()=>null, contextId, context)
+  return _remember(
+    contextId,
+    context,
+    contextString,
+    Throw
+  )(() => null)
 }
 
-export const recall = (contextId, Service, context, Throw = false) => {
+export const recall = (contextId, Service, context, contextString = false, Throw = false) => {
   isEssential(Service, contextId, context)
-  const contextString = stringify(context)
-  const maybe = _remember(contextId, contextString, Throw)
-  if (hasProp(maybe, 'memo')) {
-    return maybe.memo
-
-  } else {
+  return _remember(
+    contextId,
+    context,
+    contextString,
+    Throw
+  )(contextString => {
     const result = Service(...context)
     memorize(contextId, contextString, result)
     return result
-  }
+  })
 }
